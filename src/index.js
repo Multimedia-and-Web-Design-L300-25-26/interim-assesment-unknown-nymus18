@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import authentication from '../routes/authentication.js';
 import crypto from '../routes/crypto.js';
 
@@ -10,6 +11,10 @@ dotenv.config();
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+    origin: '*',
+    credentials: true
+}))
 
 
 
