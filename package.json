@@ -1,0 +1,31 @@
+{
+  "name": "interim-assesment-unknown-nymus18",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/bMYWKvYv)\r # Interim Assessment: Full-Stack Integration – Coinbase Clone",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Multimedia-and-Web-Design-L300-25-26/interim-assesment-unknown-nymus18.git"
+  },
+  "author": "Felix Asante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Multimedia-and-Web-Design-L300-25-26/interim-assesment-unknown-nymus18/issues"
+  },
+  "homepage": "https://github.com/Multimedia-and-Web-Design-L300-25-26/interim-assesment-unknown-nymus18#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.5.0",
+    "nodemon": "^3.1.14"
+  }
+}
