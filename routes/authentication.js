@@ -29,8 +29,8 @@ router.post('/register', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            secure: true, // Required for sameSite: 'none'
+            sameSite: 'none', // Required for cross-origin cookies
             maxAge: 3600000 // 1 hour
         });
 
@@ -70,8 +70,8 @@ router.post('/login', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            secure: true, // Required for sameSite: 'none'
+            sameSite: 'none', // Required for cross-origin cookies
             maxAge: 3600000 // 1 hour
         });
 
