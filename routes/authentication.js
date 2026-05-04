@@ -88,6 +88,13 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// ─── Logout ──────────────────────────────────────────────────────────────────
+router.post('/logout', (req, res) => {
+    res.clearCookie('token');
+    res.json({ message: 'Logged out successfully' });
+});
+
+
 // ─── Get current user (protected) ────────────────────────────────────────────
 router.get('/me', authMiddleware, async (req, res) => {
     try {
@@ -109,11 +116,6 @@ router.get('/users', authMiddleware, async (req, res) => {
     }
 });
 
-// ─── Logout ──────────────────────────────────────────────────────────────────
-router.post('/logout', (req, res) => {
-    res.clearCookie('token');
-    res.json({ message: 'Logged out successfully' });
-});
 
 // ─── Profile (protected) ─────────────────────────────────────────────────────
 router.get('/profile', authMiddleware, async (req, res) => {
