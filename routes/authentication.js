@@ -7,7 +7,6 @@ import authMiddleware from '../middleware/authMiddleware.js';
 const router = express.Router();
 console.log('Authentication router loaded');
 
-// ─── Register ────────────────────────────────────────────────────────────────
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -16,7 +15,7 @@ router.post('/register', async (req, res) => {
     }
 
     try {
-        const existingUser = await User.findOne({ email }); // was missing await
+        const existingUser = await User.findOne({ email }); 
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
@@ -29,9 +28,9 @@ router.post('/register', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: true, // Required for sameSite: 'none'
-            sameSite: 'none', // Required for cross-origin cookies
-            maxAge: 3600000 // 1 hour
+            secure: true, 
+            sameSite: 'none', 
+            maxAge: 3600000 
         });
 
         res.status(201).json({ 
@@ -47,7 +46,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// ─── Login ───────────────────────────────────────────────────────────────────
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -70,9 +69,9 @@ router.post('/login', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: true, // Required for sameSite: 'none'
-            sameSite: 'none', // Required for cross-origin cookies
-            maxAge: 3600000 // 1 hour
+            secure: true,
+            sameSite: 'none', 
+            maxAge: 3600000 
         });
 
         res.json({
@@ -88,7 +87,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// ─── Logout ──────────────────────────────────────────────────────────────────
+
 router.post('/logout', (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
@@ -99,7 +98,7 @@ router.post('/logout', (req, res) => {
 });
 
 
-// ─── Get current user (protected) ────────────────────────────────────────────
+
 router.get('/me', authMiddleware, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
@@ -110,7 +109,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     }
 });
 
-// ─── Get all users — for testing only (protected) ────────────────────────────
+
 router.get('/users', authMiddleware, async (req, res) => {
     try {
         const users = await User.find({}, '-password');
@@ -121,7 +120,7 @@ router.get('/users', authMiddleware, async (req, res) => {
 });
 
 
-// ─── Profile (protected) ─────────────────────────────────────────────────────
+
 router.get('/profile', authMiddleware, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
